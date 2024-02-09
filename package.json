@@ -1,0 +1,14 @@
+{
+  "name": "namaste-react",
+  "version": "1.0.0",
+  "description": "Revising React with Akshay Saini",
+  "main": "App.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "author": "Sujan Singh",
+  "license": "ISC",
+  "devDependencies": {
+    "parcel": "^2.11.0"
+  }
+}
