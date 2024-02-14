@@ -1,0 +1,1 @@
+export const SWIGGY_API = 'https://www.swiggy.com/dapi/restaurants/list/v5?lat=22.71700&lng=75.83370'

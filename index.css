@@ -9,67 +9,158 @@ html {
 
 .header {
     display: flex;
+    flex-wrap: wrap;
     justify-content: space-between;
     border: 1px solid red;
 }
 
 .logoContainer {
     display: flex;
+    flex-wrap: wrap;
     font-size: 1.5rem;
+}
+
+.logoContainer > a > img {
+    width: 80px;
+    height: 80px;
+    object-fit: contain;
+}
+
+.logoContainer > img,
+p {
+    padding-left: 30px;
 }
 
 .navMenu > ul {
     display: flex;
+    flex-wrap: wrap;
     list-style: none;
-    justify-content: flex-end;
+    justify-content: flex-start;
 }
 
-.navMenu > ul > li {
+.navMenu > ul > a {
     font-size: 1.5rem;
-    padding: 5%;
+    margin-right: 30px;
+    text-decoration: none;
+    color: black;
+}
+
+.navMenu > ul > a:hover {
+    text-decoration: underline;
+    text-shadow: 0.3em 0.3em 1em rgba(200, 0, 0, 0.724);
 }
 
 .searchContainer {
     display: flex;
-    width: 40%;
-    margin: 2% 0;
+    justify-content: start;
+    width: auto;
+    height: 24px;
+    margin: 2%;
+}
+
+.searchContainer > input,
+button {
+    margin-right: 5px;
+}
+
+.restaurantContainer {
+    width: 75%;
+    margin: auto;
+    border: 1px solid black;
 }
 
 .restaurantCardsContainer {
     display: flex;
     flex-wrap: wrap;
     border: 1px solid red;
-    width: 70%;
     margin: auto;
 }
 
-.restaurantCard {
-    border: 1px solid red;
-    border-radius: 5%;
-    padding: 0;
+.restaurantCardsContainer > a {
     margin: 1%;
+    color: black;
+    text-decoration: none;
+}
+
+.restaurantCard {
+    /* border: 1px solid red; */
+    box-shadow: inset 0 -3em 3em rgb(0 200 0 / 30%), 0 0 0 2px white;
+    border-radius: 5%;
+    width: 200px;
+    height: 350px;
+    padding: 0;
+    margin: 0;
     display: flex;
     flex-direction: column;
-    width: 23%;
     vertical-align: middle;
-    justify-content: center;
+    justify-content: start;
+}
+
+.restaurantCard:hover {
+    transition: all 0.05s ease 0s;
+    cursor: pointer;
+    border: none;
+    box-shadow: inset 0 -3em 3em rgb(0 200 0 / 30%), 0 0 0 2px white,
+        0.3em 0.3em 1em rgb(200 0 0 / 60%);
 }
 
 .restaurantCard > img {
     width: 100%;
-    height: fit-content;
+    height: 60%;
+    border-radius: 5%;
+    object-fit: cover;
+    border-style: none;
 }
 
 .restaurantDescription > ul {
     display: flex;
     flex-direction: column;
-    justify-content:center;
+    justify-content: center;
     list-style: none;
     font-size: 1rem;
 }
 
-.restaurantDescription > ul >li {
+.restaurantDescription > ul > li {
     margin: 1%;
+}
+
+.shimmerCards {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.shimmerCard {
+    width: 200px;
+    height: 350px;
+    box-shadow: inset 0 -3em 3em rgb(0 200 0 / 30%), 0 0 0 2px white;
+    border-radius: 5%;
+    padding: 0;
+    margin: 1%;
+    display: flex;
+    flex-direction: column;
+    vertical-align: middle;
+    justify-content: start;
+}
+
+.shimmerImg {
+    width: 100%;
+    height: 60%;
+    border-radius: 5%;
+    object-fit: cover;
+    border-style: none;
+    background-color: #f0f0f0;
+}
+
+.shimmerDescription > h1 {
+    width: 40%;
+    height: 14px;
+    background-color: #f0f0f0;
+}
+
+.shimmerDescription > p {
+    width: 80%;
+    height: 12px;
+    background-color: #f0f0f0;
 }
 
 .footerContainer {
