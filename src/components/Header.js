@@ -1,9 +1,14 @@
 import React from "react"
 import { Link } from "react-router-dom"
 import { useOnlineStatus } from "../utils/hooks"
+import { useSelector } from "react-redux"
+
 const Header = () => {
     const onlineStatus = useOnlineStatus()
-    console.log("header:onlinestatus: ", onlineStatus)
+    // console.log("header:onlinestatus: ", onlineStatus)
+    const cartItems = useSelector((store) => store.cart.items)
+    console.log("header: cartitems: ", cartItems)
+
     return (
         <div className="header">
             <div className="logoContainer">
@@ -26,7 +31,7 @@ const Header = () => {
                     </Link>
                     {/* <li>Sign In</li> */}
                     <Link to="/cart">
-                        <li>Cart</li>
+                        <li>Cart: {cartItems.length}</li>
                     </Link>
                 </ul>
             </div>

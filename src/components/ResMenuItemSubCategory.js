@@ -1,9 +1,12 @@
 import React from "react"
 import { SWIGGY_MEDIA_ASSETS } from "../utils/constants"
+import { useDispatch } from "react-redux"
+import { addItem } from "../utils/cartSlice"
+import ItemCounter from "./ItemCounter"
 
 const ResMenuItemSubCategory = ({ subCategoryCard }) => {
-    console.log(subCategoryCard?.card?.info)
-    // const {name, price, defaultPrice, ratings, imageId, description} =
+    // console.log(subCategoryCard?.card?.info)
+
     return (
         <>
             <div className="dishCardContainer">
@@ -24,7 +27,14 @@ const ResMenuItemSubCategory = ({ subCategoryCard }) => {
                         }
                         alt="dish image"
                     ></img>
-                    <button>ADD</button>
+                    {/* <button
+                        onClick={() =>
+                            handleAddItem(subCategoryCard?.card?.info)
+                        }
+                    >
+                        ADD
+                    </button> */}
+                    <ItemCounter item={subCategoryCard?.card?.info} />
                 </div>
             </div>
         </>

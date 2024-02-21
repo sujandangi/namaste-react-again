@@ -1,7 +1,6 @@
 import { useParams } from "react-router-dom"
 import { useEffect, useState } from "react"
 import { SWIGGY_MENU_API } from "../utils/constants"
-import ResMenuCard from "./ResMenuCard"
 import ResMenuResInfo from "./ResMenuResInfo"
 import ResMenuResOffers from "./ResMenuResOffers"
 import ResMenuItemCategory from "./ResMenuItemCategory"

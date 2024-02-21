@@ -9,13 +9,17 @@ import Help from "./src/components/Help"
 import Offers from "./src/components/Offers"
 import Cart from "./src/components/Cart"
 import ResMenuPage from "./src/components/ResMenuPage"
+import { Provider } from "react-redux"
+import appStore from "./src/utils/appStore"
 
 const AppLayout = () => {
     return (
         <>
-            <Header />
-            <Outlet />
-            <Footer />
+            <Provider store={appStore}>
+                <Header />
+                <Outlet />
+                <Footer />
+            </Provider>
         </>
     )
 }
