@@ -1,7 +1,9 @@
 import React from "react"
 import { Link } from "react-router-dom"
-
+import { useOnlineStatus } from "../utils/hooks"
 const Header = () => {
+    const onlineStatus = useOnlineStatus()
+    console.log("header:onlinestatus: ", onlineStatus)
     return (
         <div className="header">
             <div className="logoContainer">
@@ -12,6 +14,7 @@ const Header = () => {
                     />
                 </Link>
                 <p>Location</p>
+                <p>{onlineStatus ? "online" : "offline"}</p>
             </div>
             <div className="navMenu">
                 <ul>

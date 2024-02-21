@@ -5,31 +5,28 @@ import ShimmerCards from "./ShimmerCards"
 import { Link } from "react-router-dom"
 
 const RestaurantCards = () => {
-    let [restaurants, setRestaurants] = useState([])
-    let [searchedRestaurants, setSearchedRestaurants] = useState([])
-    let [filteredRestaurants, setFilteredRestaurants] = useState([])
-    let [searchValue, setSearchValue] = useState("")
-    let [isFiltered, setIsFiltered] = useState(false)
-    let [isSearched, setIsSearched] = useState(false)
+    const [restaurants, setRestaurants] = useState([])
+    const [searchedRestaurants, setSearchedRestaurants] = useState([])
+    const [filteredRestaurants, setFilteredRestaurants] = useState([])
+    const [searchValue, setSearchValue] = useState("")
+    const [isFiltered, setIsFiltered] = useState(false)
+    const [isSearched, setIsSearched] = useState(false)
 
     const handleSearch = () => {
-        setIsSearched(true)
-        setIsFiltered(false)
-        console.log("searchbtn clicked", isSearched)
-        setSearchedRestaurants(
-            restaurants.filter((res) =>
-                res.info.name.toLowerCase().includes(searchValue.toLowerCase())
-            )
+        const lowerCaseSearchValue = searchValue.toLowerCase()
+        const searched = restaurants.filter((res) =>
+            res.info.name.toLowerCase().includes(lowerCaseSearchValue)
         )
+        setSearchedRestaurants(searched)
+        setIsFiltered(false)
+        setIsSearched(true)
     }
 
     const handleFilter = () => {
-        setIsFiltered(true)
+        const filtered = restaurants.filter((res) => res.info.avgRating > 4.3)
+        setFilteredRestaurants(filtered)
         setIsSearched(false)
-        console.log("filterbtn clicked", isFiltered)
-        setFilteredRestaurants(
-            restaurants.filter((res) => res.info.avgRating > 4)
-        )
+        setIsFiltered(true)
     }
 
     useEffect(() => {
@@ -37,12 +34,13 @@ const RestaurantCards = () => {
             try {
                 const response = await fetch(SWIGGY_API)
                 const json = await response.json()
-                console.log(json)
+                // console.log(json)
                 const resList =
-                    json.data.cards[1].card.card.gridElements.infoWithStyle
-                        .restaurants
+                    json?.data?.cards[1]?.card?.card?.gridElements
+                        ?.infoWithStyle?.restaurants
+
                 setRestaurants(resList)
-                console.log("from res cards, main api call: ", json.data.cards)
+                // console.log("from res cards, main api call: ", json.data.cards)
             } catch (error) {
                 console.error("Error fetching data:", error)
             }
@@ -73,31 +71,18 @@ const RestaurantCards = () => {
             <div className="restaurantCardsContainer">
                 {restaurants.length === 0 ? (
                     <ShimmerCards />
-                ) : isFiltered ? (
-                    filteredRestaurants.map((res) => (
-                        <Link
-                            to={"/restaurants/" + res.info.id}
-                            key={res.info.id}
-                        >
-                            <RestaurantCard res={res} />
-                        </Link>
-                    ))
-                ) : isSearched ? (
-                    searchedRestaurants.map((res) => (
-                        <Link
-                            to={"/restaurants/" + res.info.id}
-                            key={res.info.id}
-                        >
-                            <RestaurantCard res={res} />
-                        </Link>
-                    ))
                 ) : (
-                    restaurants.map((res) => (
+                    (isFiltered
+                        ? filteredRestaurants
+                        : isSearched
+                        ? searchedRestaurants
+                        : restaurants
+                    ).map((res) => (
                         <Link
                             to={"/restaurants/" + res.info.id}
                             key={res.info.id}
                         >
-                            <RestaurantCard res={res} />
+                            <RestaurantCard resDetails={res} />
                         </Link>
                     ))
                 )}

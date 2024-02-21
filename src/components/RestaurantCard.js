@@ -1,19 +1,20 @@
 import React from "react"
+import { SWIGGY_MEDIA_ASSETS } from "../utils/constants"
 
-const RestaurantCard = ({ res }) => {
-    console.log(res)
+const RestaurantCard = ({ resDetails }) => {
+    console.log("RestaurantCard: ", resDetails)
     return (
         <div className="restaurantCard">
             <img
                 alt="res-image"
-                src={`https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/${res.info.cloudinaryImageId}`}
+                src={SWIGGY_MEDIA_ASSETS + resDetails?.info?.cloudinaryImageId}
             />
             <div className="restaurantDescription">
                 <ul>
-                    <li>{res.info.name}</li>
-                    <li>{res.info.avgRating}</li>
-                    <li>{res.info.sla.slaString}</li>
-                    <li>{res.info.costForTwo}</li>
+                    <li>{resDetails?.info?.name}</li>
+                    <li>{resDetails?.info?.avgRating}</li>
+                    <li>{resDetails?.info?.sla?.slaString}</li>
+                    <li>{resDetails?.info?.costForTwo}</li>
                 </ul>
             </div>
         </div>
