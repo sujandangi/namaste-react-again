@@ -14,8 +14,7 @@ const CartItem = ({ cartItem }) => {
             <div>
                 <ItemCounter item={cartItem} />
             </div>
-            <h3>{name}</h3>
-
+            <div>{name}</div>
             <div>
                 Rs.{" "}
                 {((price / 100) * itemCount) |

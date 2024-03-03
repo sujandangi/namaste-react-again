@@ -22,7 +22,7 @@ const RestaurantMenu = () => {
     }, [])
 
     const params = useParams()
-    console.log("params: ", params)
+    // console.log("params: ", params)
     return <div>RestaurantMenu {params.id}</div>
 }
 

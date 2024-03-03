@@ -18,7 +18,6 @@ const AppLayout = () => {
             <Provider store={appStore}>
                 <Header />
                 <Outlet />
-                <Footer />
             </Provider>
         </>
     )

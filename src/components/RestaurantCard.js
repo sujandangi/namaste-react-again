@@ -3,6 +3,7 @@ import { SWIGGY_MEDIA_ASSETS } from "../utils/constants"
 
 const RestaurantCard = ({ resDetails }) => {
     console.log("RestaurantCard: ", resDetails)
+    const { name, avgRating, sla, costForTwo } = resDetails?.info
     return (
         <div className="restaurantCard">
             <img
@@ -11,10 +12,18 @@ const RestaurantCard = ({ resDetails }) => {
             />
             <div className="restaurantDescription">
                 <ul>
-                    <li>{resDetails?.info?.name}</li>
-                    <li>{resDetails?.info?.avgRating}</li>
-                    <li>{resDetails?.info?.sla?.slaString}</li>
-                    <li>{resDetails?.info?.costForTwo}</li>
+                    <li>
+                        <h3>{name}</h3>
+                    </li>
+                    <li>
+                        <p>{avgRating}</p>
+                    </li>
+                    <li>
+                        <p>{sla?.slaString}</p>
+                    </li>
+                    <li>
+                        <p>{costForTwo}</p>
+                    </li>
                 </ul>
             </div>
         </div>

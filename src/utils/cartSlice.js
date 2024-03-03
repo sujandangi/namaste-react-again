@@ -7,14 +7,20 @@ const cartSlice = createSlice({
     },
     reducers: {
         addItem: (state, action) => {
-            console.log("additem action: ", action)
             state.items.push(action.payload)
-            console.log("state: ", state)
         },
         removeItem: (state, action) => {
-            //remove logic
+            // Find the index of the item to be removed
+            const indexToRemove = state.items.findIndex(
+                (item) => item.id === action.payload.id
+            )
+
+            // If the item is found, remove it
+            if (indexToRemove !== -1) {
+                state.items.splice(indexToRemove, 1)
+            }
         },
-        clearCart: (state, action) => {
+        clearCart: (state) => {
             state.items.length = 0
         },
     },

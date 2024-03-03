@@ -1,5 +1,5 @@
 import { useSelector, useDispatch } from "react-redux"
-import { addItem } from "../utils/cartSlice"
+import { addItem, removeItem } from "../utils/cartSlice"
 
 const ItemCounter = ({ item }) => {
     const dispatch = useDispatch()
@@ -14,7 +14,10 @@ const ItemCounter = ({ item }) => {
         dispatch(addItem(i))
     }
 
-    const handleRemoveItem = (i) => {}
+    const handleRemoveItem = (i) => {
+        console.log("itemcaounter: remove: ", i)
+        dispatch(removeItem(i))
+    }
 
     return (
         <div className="itemCounter">

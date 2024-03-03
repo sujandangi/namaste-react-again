@@ -2,29 +2,36 @@ import React from "react"
 
 const ResMenuResInfo = ({ restaurantInfo }) => {
     console.log("resinfo: ", restaurantInfo)
+    const {
+        name,
+        areaName,
+        avgRating,
+        costForTwoMessage,
+        cuisines,
+        sla,
+        totalRatings,
+        feeDetails,
+    } = restaurantInfo
     return (
         <>
-            <h1 className="resInfoHeading">{restaurantInfo.name}</h1>
+            <h1 className="resInfoHeading">{name}</h1>
             <div className="resInfoCard">
                 <div className="resInfoDescription">
-                    <div className="resInfoName">{restaurantInfo.name}</div>
-                    <div className="resInfoCuisines">Cuisines</div>
-                    <div className="resInfoAddress">Address</div>
+                    <div className="resInfoName">{name}</div>
+                    <div className="resInfoCuisines">{cuisines.join(",")}</div>
+                    <div className="resInfoAddress">{areaName}</div>
                 </div>
                 <div className="resInfoRatingCard">
-                    <div className="ratingStar">
-                        ✩ {restaurantInfo.avgRatingString}
-                    </div>
+                    <div className="ratingStar">✩ {avgRating}</div>
                     <hr></hr>
-                    <div className="totalRatings">5k Ratings</div>
+                    <div className="totalRatings">{totalRatings}</div>
                 </div>
             </div>
             <div className="resInfoDelivery">
                 <ul>
                     <li>
-                        <span>Bike Logo</span>distance |
+                        <span>{sla.minDeliveryTime} Minutes</span>
                     </li>
-                    <li className="px-2">Delivery fees</li>
                 </ul>
             </div>
             <hr></hr>
